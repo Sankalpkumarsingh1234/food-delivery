@@ -2,9 +2,14 @@ import UserModel from '../config/User.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import validator from 'validator';
+import { JWT_SECRET } from '../config/env.js';
 
 const createToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET || 'devsecret', { expiresIn: '7d' });
+    if (!JWT_SECRET) {
+        // Fail fast so tokens aren't issued with an insecure default secret
+        throw new Error('JWT_SECRET is not configured. Set JWT_SECRET in your environment.');
+    }
+    return jwt.sign({ id }, JWT_SECRET, { expiresIn: '7d' });
 };
 
 const loginuser = async (req, res) => {

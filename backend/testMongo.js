@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
+import { MONGODB_URI } from './config/env.js';
 
-const uri = "mongodb+srv://1:1@cluster0.h31oacv.mongodb.net/?appName=Cluster0";
+const uri = MONGODB_URI;
 
 async function test() {
   try {

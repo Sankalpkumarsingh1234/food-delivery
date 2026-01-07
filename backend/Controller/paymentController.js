@@ -1,14 +1,14 @@
 import Stripe from 'stripe';
+import { STRIPE_SECRET_KEY, STRIPE_SUCCESS_URL, STRIPE_CANCEL_URL } from '../config/env.js';
 
 let stripe = null;
 
 const initStripe = () => {
   if (!stripe) {
-    const stripeKey = process.env.STRIPE_SECRET_KEY;
-    if (!stripeKey) {
+    if (!STRIPE_SECRET_KEY) {
       throw new Error('STRIPE_SECRET_KEY is not configured');
     }
-    stripe = new Stripe(stripeKey);
+    stripe = new Stripe(STRIPE_SECRET_KEY);
   }
   return stripe;
 };
@@ -37,8 +37,8 @@ export const createCheckoutSession = async (req, res) => {
           quantity: 1,
         },
       ],
-      success_url: process.env.STRIPE_SUCCESS_URL || 'http://localhost:5175/',
-      cancel_url: process.env.STRIPE_CANCEL_URL || 'http://localhost:5175/',
+      success_url: STRIPE_SUCCESS_URL,
+      cancel_url: STRIPE_CANCEL_URL,
     });
 
     console.log('Stripe session created:', session.id);

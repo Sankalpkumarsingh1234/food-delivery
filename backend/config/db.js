@@ -1,10 +1,12 @@
 import mongoose from 'mongoose';
+import { MONGODB_URI } from './env.js';
 
-const mangourl = process.env.MONGODB_URI || "mongodb+srv://1:1@cluster0.h31oacv.mongodb.net/?appName=Cluster0";
+// Use configured MONGODB_URI or a safe local default
+const mangourl = MONGODB_URI;
 
 mongoose.connect(mangourl)
   .then(() => console.log("connected to mongo db"))
-  .catch((err) => console.log(err));
+  .catch((err) => console.error('MongoDB connection error:', err));
 
 export default mongoose;
 
