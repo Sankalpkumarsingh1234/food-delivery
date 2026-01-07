@@ -1,0 +1,61 @@
+.navbar
+{
+    padding:20px 0px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.navbar-search-icon {
+  position: relative;
+}
+
+.dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+  right: -8px;
+  top: -8px;
+}
+.navbar .border
+{
+    padding-bottom:2px;
+    border-bottom:2px solid #646cff;
+}
+.navbar-search-icon{
+    position:relative;
+}
+.navbar-search-icon .dot{
+    position:absolute;
+    width:8px;
+    height:8px;
+    background-color:red;
+    border-radius:50%;
+    right:-8px;
+    top:-8px;
+}
+
+.navbar-cart-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.navbar-cart-link:hover {
+  opacity: 0.8;
+}
